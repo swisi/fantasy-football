@@ -1,8 +1,12 @@
 from django.db import models
 
 
-class NFLPlayers(models.Model):
-    index = models.IntegerField(blank=True, null=True)
+class NFL_Players(models.Model):
+
+    def __str__(self):
+        return f"{self.player_name} ({self.team})"
+
+    id = models.IntegerField(blank=False, null=False, primary_key=True)
     team = models.TextField(blank=True, null=True)
     player_name = models.TextField(blank=True, null=True)
     jersey_number = models.FloatField(blank=True, null=True)
@@ -10,10 +14,14 @@ class NFLPlayers(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'nfl_players'
+        db_table = 'nfl_player'
 
-class NFLTeams(models.Model):
-    index = models.IntegerField(blank=True, null=True)
+class NFL_Teams(models.Model):
+
+    def __str__(self):
+        return f"{self.team_name} ({self.team_abbr})"
+
+    id = models.IntegerField(blank=False, null=False, primary_key=True)
     team_abbr = models.TextField(blank=True, null=True)
     team_name = models.TextField(blank=True, null=True)
     team_id = models.IntegerField(blank=True, null=True)
@@ -22,11 +30,15 @@ class NFLTeams(models.Model):
     team_division = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'nfl_teams'
+        managed = True
+        db_table = 'nfl_team'
 
-class NFLStats(models.Model):
-    index = models.IntegerField(blank=True, null=True)
+class NFL_Stats(models.Model):
+
+    def __str__(self):
+        return f"W{self.week} - {self.player_name} - {self.season}"
+
+    id = models.IntegerField(blank=False, null=False, primary_key=True)
     player_id = models.TextField(blank=True, null=True)
     player_name = models.TextField(blank=True, null=True)
     player_display_name = models.TextField(blank=True, null=True)
@@ -81,5 +93,5 @@ class NFLStats(models.Model):
     fantasy_points_ppr = models.FloatField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'nfl_stats'
+        managed = True
+        db_table = 'nfl_weekly_stat'
