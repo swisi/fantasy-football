@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_tables2',
     'django_filters',
     'nfldata',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
                 BASE_DIR / 'templates', 
+                BASE_DIR / 'home' / 'templates' / 'home', 
                 BASE_DIR / 'nfldata' / 'templates' / 'nfldata'
                 ],
         'APP_DIRS': True,
