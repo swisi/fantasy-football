@@ -95,3 +95,4 @@ class NFL_Stats(models.Model):
     class Meta:
         managed = True
         db_table = 'nfl_weekly_stat'
+
