@@ -1,62 +1,37 @@
 <!DOCTYPE html>
-{% load static %}
-{% load django_bootstrap5 %}
-{% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
-<html lang="{{ LANGUAGE_CODE|default:'en_us' }}">
-
+<html>
 <head>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Page title -->
-    <title>
-    {% block bootstrap5_title %}
-                  NFL Fantasy Game
-    {% endblock %}
-    </title>
-
-    <!-- Bootstrap CSS -->
-
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
-    
-   
-
-    {% block bootstrap5_extra_head %}{% endblock %}
-
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
 </head>
-
 <body>
-{% block bootstrap5_before_content %}{% endblock %}
 
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-{% block bootstrap5_content %}
-    <div class="container">
-        <h1>{% block title %}{% endblock %}</h1>
-
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
-            <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
-        </ul>
-
-        {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
-
-        {% block content %}Hier kommt dann der Inhalt!{% endblock %}
-    </div>
-
-{% endblock %}
-
-
-{% block bootstrap5_after_content %}{% endblock %}
-
-<!-- Bootstrap JavaScript if it is in body -->
-
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-{% block bootstrap5_extra_script %}{% endblock %}
-
+  {% block content %}
+  {% endblock %}
+</div>
 </body>
-
 </html>
