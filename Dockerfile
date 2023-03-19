@@ -11,10 +11,10 @@ COPY . /app
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 # Make port 80 available to the world outside this container
-EXPOSE 7070
+EXPOSE 80
 
 # Define environment variable
 ENV NAME Fantasy-Football
 
 # Run app.py when the container launches
-CMD ["python", "manage.py", "runserver", "0.0.0.0:7070"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
