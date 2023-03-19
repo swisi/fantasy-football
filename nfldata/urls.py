@@ -3,4 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('stats/', views.nfl, name='stats'),]
+    path('', views.nfl, name='stats'), # Leere /nfl/ Url wird auf /nfl/stats weitergeleitet
+    path('stats/', views.nfl, name='stats'),
+    ]

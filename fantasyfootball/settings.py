@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'bootstrap5',
     'django_tables2',
     'django_filters',
-    'nfldata',
     'home',
+    'accounts',
+    'nfldata',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,7 @@ TEMPLATES = [
         'DIRS': [
                 BASE_DIR / 'templates', 
                 BASE_DIR / 'home' / 'templates' / 'home', 
+                BASE_DIR / 'accounts' / 'templates' / 'accounts', 
                 BASE_DIR / 'nfldata' / 'templates' / 'nfldata'
                 ],
         'APP_DIRS': True,
