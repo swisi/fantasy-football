@@ -123,7 +123,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-ALLOWED_HOSTS = ['167.235.226.17']
+ALLOWED_HOSTS = ['167.235.226.17', '.swisi.ch']
 
 
 
