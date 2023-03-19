@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class=".bg-secondary.bg-gradient">
 <head>
   <title>{% block title %}{% endblock %}</title>
   {% load bootstrap5 %}
@@ -7,58 +7,75 @@
   {% bootstrap_javascript %}
 </head>
 <body>
+ 
+<div >
+    <div class="container">
 
-<div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/nfl/stats">NFL Stats</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        {% if is_authenticated %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Profil
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/accounts/logout/">Logout</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="/accounts/profile/">Profile</a></li>
+                                <!--    
+                                    <li><a class="dropdown-item" href="/accounts/password_reset/">Reset Password</a></li>
+                                -->
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    User
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/accounts/login/">Login</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="/accounts/signup/">Sign up</a></li>
+                                </ul>
+                        {% endif %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/nfl/stats">NFL Stats</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-                {% if is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Profil
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/accounts/logout/">Logout</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/accounts/profile/">Profile</a></li>
-                        <!--    
-                            <li><a class="dropdown-item" href="/accounts/password_reset/">Reset Password</a></li>
-                        -->
-                        </ul>
-                    </li>
-                {% else %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            User
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/accounts/login/">Login</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/accounts/signup/">Sign up</a></li>
-                        </ul>
-                {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/admin">Admin</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-                <li class="nav-item">
-                    <a class="nav-link active" href="/admin">Admin</a>
-                </li>
-            </ul>
+                
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="card mt-5">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
 
-  {% block content %}
-  {% endblock %}
+
+
+        <div class="container bg-secondary">
+
+        </div>
+
+    </div>
 
 </div>
+
 </body>
 </html>
