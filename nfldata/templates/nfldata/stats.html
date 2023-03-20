@@ -1,22 +1,71 @@
 {% extends 'base.html' %}
 
-{% load bootstrap5 %}
-{% load django_tables2 %}
-{% load render_table from django_tables2 %}
-
 {% block content %}
 
-<h1>NFL Stat Page</h1>
+     
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>NFL Weekly Stats</h2>
+                </div>
+                <div class="card-body">
+                    <table class="table data-table">
+                        <thead>
+                            <tr>
+                                <th width="20">ID</th>
+                                <th>Season</th>
+                                <th>Week</th>
+                                <th>Player</th>
+                                <th>Position</th>
+                                <th>Fantasy Points</th>
+                                <th>Fantasy Points ppr</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-{% if filter %}
-    <form action="" method="get" class="form form-inline">
-        {% bootstrap_form filter.form layout='inline' %}
-        {% bootstrap_button 'filter' %}
-    </form>
-{% endif %}
-
-<!-- Placeholder for the stats table -->
-{% render_table table %}
 
 
+     
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('.data-table').dataTable({
+            processing: true,
+            serverSide: false,
+            ordering:  true,
+            pageLength: 25,
+            columnDefs: [
+                {
+                    "render": function ( data, type, row ) {
+                        return "<button class='btn btn-danger btn-delete' data-pk='" + row.pk + "'>" + 'Delete' + "</button>";
+                    },
+                    "targets": 0,
+                    "visible": false,
+                }
+            ],
+            ajax: {
+                url: "{% url 'fetchstats' %}",
+                dataSrc: "",
+            },
+            columns: [
+                { data: "pk" },
+                { data: "fields.season" },
+                { data: "fields.week" },
+                { data: "fields.player_display_name" },
+                { data: "fields.position" },
+                { data: "fields.fantasy_points" },
+                { data: "fields.fantasy_points_ppr" },
+            ]
+        });
+    });
+</script>
 {% endblock %}

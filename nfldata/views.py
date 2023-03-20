@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from django.core import serializers
+from django.http import HttpResponse, JsonResponse
 
 from .models import NFL_Stats
-from .tables import NFLStatsTable
 
 def index(request):
     # Your view logic here
@@ -11,11 +12,17 @@ def index(request):
     
     return render(request, 'index.html',context)
 
+def fetchstats(request):
+    object_list = NFL_Stats.objects.all()
+    json = serializers.serialize('json', object_list)
+    return HttpResponse(json, content_type='application/json')
+
+
 def nfl(request):
     context = {}
     if request.user.is_authenticated:
         context['is_authenticated'] = True
 
     stats = NFL_Stats.objects.all()
-    table = NFLStatsTable(stats)
-    return render(request, 'stats.html', {'table': table, 'context': context})
+    
+    return render(request, 'stats.html', {'stats': stats, 'context': context})
