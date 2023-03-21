@@ -50,6 +50,18 @@
                     },
                     "targets": 0,
                     "visible": false,
+                },
+                {
+                "targets": 5, // hier "3" ist die Spaltennummer, die Sie formatieren möchten
+                "render": function ( data, type, row ) {
+                    return parseFloat(data).toFixed(3); // runden Sie die Zahl auf 3 Nachkommastellen
+                    }
+                },
+                {
+                "targets": 6, // hier "3" ist die Spaltennummer, die Sie formatieren möchten
+                "render": function ( data, type, row ) {
+                    return parseFloat(data).toFixed(3); // runden Sie die Zahl auf 3 Nachkommastellen
+                    }
                 }
             ],
             ajax: {
