@@ -6,7 +6,7 @@ import nfl_data_py as nfl
 def create_nfl_db(years):
 
     # Definieren der Spalten für Spieler-Info
-    columns_R = ['player_id','team', 'player_name', 'jersey_number', 'status']
+    columns_R = ['player_id','team', 'player_name', 'position', 'jersey_number', 'status']
 
     # Daten von API holen
     dfp = nfl.import_rosters(years, columns_R)

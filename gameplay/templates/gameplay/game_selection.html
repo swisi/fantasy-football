@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Home of NFL Fantasy Game{% endblock %}
+
+{% block content %}
+
+<div class="card-header">Welcome to a new Fantasy Football Game</div>
+  <div class="card-body">
+      <div class="container">
+        
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

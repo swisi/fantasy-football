@@ -24,4 +24,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path("accounts/", include("django.contrib.auth.urls")),
     path('nfl/', include('nfldata.urls')),
+    path('gameplay/', include('gameplay.urls')),
+
     ]

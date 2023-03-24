@@ -24,7 +24,7 @@ create_nfl_team_db.short_description = "Update NFL Team Info"
 
 def create_nfl_player_db(modeladmin, request, queryset):
     years = [season]  # Change this to use other years if needed
-    columns_R = ['player_id','team', 'player_name', 'jersey_number', 'status']
+    columns_R = ['player_id','team', 'player_name', 'position', 'jersey_number', 'status']
      
     dfp = nfl.import_rosters(years, columns_R)
     dfp.insert(0, 'id', range(1, 1+len(dfp)))

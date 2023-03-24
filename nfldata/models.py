@@ -9,6 +9,7 @@ class NFL_Players(models.Model):
     id = models.IntegerField(blank=False, null=False, primary_key=True)
     team = models.TextField(blank=True, null=True)
     player_name = models.TextField(blank=True, null=True)
+    position = models.TextField(blank=True, null=True)
     jersey_number = models.FloatField(blank=True, null=True)
     status = models.TextField(blank=True, null=True)
 
