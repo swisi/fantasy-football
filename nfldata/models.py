@@ -6,9 +6,9 @@ class NFL_Players(models.Model):
     def __str__(self):
         return f"{self.player_name} ({self.team})"
 
-#    id = models.IntegerField(blank=False, null=False, primary_key=True)
+    id = models.IntegerField(primary_key=True)
     team = models.TextField(blank=True, null=True)
-    player_id = models.IntegerField(blank=True, null=True)
+    player_id = models.TextField(blank=True, null=True)
     player_name = models.TextField(blank=True, null=True)
     position = models.TextField(blank=True, null=True)
     jersey_number = models.FloatField(blank=True, null=True)

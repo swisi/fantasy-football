@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'home',
-    'accounts',
     'nfldata',
+    'accounts',
     'gameplay',
 ]
 
