@@ -9,7 +9,13 @@ class GamePlayView(BaseDatatableView):
     columns = ['week_number', 'qb', 'rb', 'wr', 'te', 'k', 'qb_backup', 'rb_backup', 'wr_backup', 'te_backup', 'k_backup']
 
     def get_initial_queryset(self):
-        return self.model.objects.filter(user=self.request.user).order_by('week_number')
+        queryset = self.model.objects.filter(user=self.request.user).order_by('week_number')
+        if not queryset.exists():
+            # Create GamePlay objects for 20 weeks
+            for week in range(1, 21):
+                self.model.objects.create(user=self.request.user, week_number=week)
+            queryset = self.model.objects.filter(user=self.request.user).order_by('week_number')
+        return queryset
 
     def render_column(self, row, column):
         # Customize rendering of columns
@@ -23,7 +29,3 @@ class GamePlayView(BaseDatatableView):
         # Default rendering
         return super(GamePlayView, self).render_column(row, column)
 
-
-def game_selection(request):
-    # Implement your view logic here
-    return render(request, 'game_selection.html')
