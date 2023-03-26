@@ -1,27 +1,52 @@
 {% extends 'base.html' %}
 
-{% block title %}Home of NFL Fantasy Game{% endblock %}
-
 {% block content %}
+  <table id="gameplay-table" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Week Number</th>
+        <th>QB</th>
+        <th>RB</th>
+        <th>WR</th>
+        <th>TE</th>
+        <th>K</th>
+        <th>QB Backup</th>
+        <th>RB Backup</th>
+        <th>WR Backup</th>
+        <th>TE Backup</th>
+        <th>K Backup</th>
+      </tr>
+    </thead>
+  </table>
+{% endblock %}
 
-<div class="card-header">Welcome to a new Fantasy Football Game</div>
-  <div class="card-body">
-      <div class="container">
-        
-        <form method="post">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        
-      </div>
-  </div>
-</div>
-
-
-
-
-
-
-
+{% block scripts %}
+  {{ block.super }}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var table = $('#gameplay-table').DataTable({
+        "ajax": "{% url 'gameplay-data' %}",
+        "columns": [
+          {"data": "week_number"},
+          {"data": "qb"},
+          {"data": "rb"},
+          {"data": "wr"},
+          {"data": "te"},
+          {"data": "k"},
+          {"data": "qb_backup"},
+          {"data": "rb_backup"},
+          {"data": "wr_backup"},
+          {"data": "te_backup"},
+          {"data": "k_backup"}
+        ],
+        "columnDefs": [
+          { "width": "50px", "targets": [0] },
+          { "width": "150px", "targets": [1,2,3,4,5,6,7,8,9,10] },
+        ],
+        "paging":   false,
+        "ordering": false,
+        "info":     false
+      });
+    });
+  </script>
 {% endblock %}

@@ -64,7 +64,9 @@ TEMPLATES = [
                 BASE_DIR / 'templates', 
                 BASE_DIR / 'home' / 'templates' / 'home', 
                 BASE_DIR / 'accounts' / 'templates' / 'accounts', 
-                BASE_DIR / 'nfldata' / 'templates' / 'nfldata'
+                BASE_DIR / 'nfldata' / 'templates' / 'nfldata',
+                BASE_DIR / 'gameplay' / 'templates' / 'gameplay',
+
                 ],
         'APP_DIRS': True,
         'OPTIONS': {
