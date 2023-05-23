@@ -30,20 +30,28 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/nfl/stats">NFL Stats</a>
                         </li>
+<<<<<<< HEAD
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/gameplay/">GamePlay</a>
                         </li>
+=======
+                        {% if user %}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/gameplay/">Gameplay</a>
+                        </li>
+                        {% endif %}
+>>>>>>> 3cf9b87db85401945e7f369c7b1e805008a51c58
                     </ul>
                     <ul class="navbar-nav ms-auto">
-                        {% if is_authenticated %}
+                        {% if user %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Profil
+                                {{ user.username}}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/accounts/logout/">Logout</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="/accounts/profile/">Profile</a></li>
+                                <li><a class="dropdown-item" href="/accounts/profile/">Profil</a></li>
                                 <!--    
                                     <li><a class="dropdown-item" href="/accounts/password_reset/">Reset Password</a></li>
                                 -->
